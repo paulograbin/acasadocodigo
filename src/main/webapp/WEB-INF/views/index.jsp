@@ -2,9 +2,9 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<title>Casa do CÃ³digo</title>
+	<title>Casa do Código</title>
 </head>
 <body>
-	<h1>Casa Do CÃ³digo</h1>
+	<h1>Casa Do Código</h1>
 </body>
 </html>
