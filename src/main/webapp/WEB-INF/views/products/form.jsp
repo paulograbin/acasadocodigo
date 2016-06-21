@@ -1,25 +1,31 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@page pageEncoding="UTF-8" %>
 <html>
 	<head>
-		<meta charset="URF-8">
+		<meta charset="UTF-8">
 		<title>Cadastro de livros</title>
 	</head>
 	<body>
-		<c:url value="/products" var="url"/>
-		<form action="${url}" method="post">
+		<%-- <form:form action="${spring.mvcUrl('PC#save').build()}" method="post" commandName="product"> --%>
+		<c:url value="/" var="url"/>
+		<form:form action="${url}products" method="post" commandName="product">	
 			<div>
-				<label for="title">Título</label>
-				<input type="text" name="title" id="title">
+				<label for="title">TÃ­tulo</label>
+				<form:input path="title" id="title"/>
+				<form:errors path="description"/>
 			</div>
 			<div>
-				<label for="description">Descrição</label>
-				<textarea rows="10" cols="20" name="description" id="description"></textarea>
+				<label for="description">DescriÃ§Ã£o</label>
+				<form:textarea path="description" rows="10" cols="10" id="description"/>
+				<form:errors path="description"/>
 			</div>
 			<div>
-				<label for="numberOfPages">Número de páginas</label>
-				<input type="text" name="numberOfPages" id="numberOfPages">
+				<label for="numberOfPages">NÃºmero de pÃ¡ginas</label>
+				<form:input path="numberOfPages" id="numberOfPages"/>
+				<form:errors path="numberOfPages"/>
 			</div>
-			
 			<div>
 				<c:forEach items="${types}" var="bookType" varStatus="status">
 					<div>
@@ -30,10 +36,9 @@
 					</div>				
 				</c:forEach>
 			</div>
-			
 			<div>
 				<input type="submit" value="Enviar">
 			</div>
-		</form>
+		</form:form>
 	</body>
 </html>
