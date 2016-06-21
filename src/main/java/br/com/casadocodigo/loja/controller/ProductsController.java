@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.casadocodigo.loja.daos.ProductDAO;
@@ -25,10 +26,18 @@ public class ProductsController {
 		return mv;
 	}
 	
-	@RequestMapping("/products")
+	@RequestMapping(value="/products", method=RequestMethod.POST)
 	@Transactional
 	public String save(Product product) {
 		productDAO.save(product);
 		return "products/ok";
+	}
+	
+	@RequestMapping(value = "/products", method=RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView mv = new ModelAndView("products/list");
+		mv.addObject("products", productDAO.list());
+		
+		return mv;
 	}
 }
