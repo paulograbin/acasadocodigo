@@ -7,9 +7,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.casadocodigo.loja.controller.HomeController;
 import br.com.casadocodigo.loja.daos.ProductDAO;
+import br.com.casadocodigo.loja.validations.TitulosIguaisValidator;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses= { HomeController.class, ProductDAO.class } )
+@ComponentScan(basePackageClasses= { HomeController.class, ProductDAO.class, TitulosIguaisValidator.class } )
 public class AppWebConfiguration {
 
 	@Bean
