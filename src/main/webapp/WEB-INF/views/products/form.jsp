@@ -10,7 +10,7 @@
 	<body>
 		<%-- <form:form action="${spring.mvcUrl('PC#save').build()}" method="post" commandName="product"> --%>
 		<c:url value="/" var="url"/>
-		<form:form action="${url}products" method="post" commandName="product">	
+		<form:form action="${url}products" method="post" commandName="product" enctype="multipart/form-data">	
 			<div>
 				<label for="title">Título</label>
 				<form:input path="title" id="title"/>
@@ -30,6 +30,11 @@
 				<label for="releaseDate">Data de lançamento</label>
 				<form:input path="releaseDate" type="date" id="releaseDate"/>
 				<form:errors path="releaseDate"/>
+			</div>
+			<div>
+				<label for="summary">Sumario do livro</label>
+				<input type="file" name="summary" id="summary"/>
+				<form:errors path="summaryPath"/>
 			</div>
 			<div>
 				<c:forEach items="${types}" var="bookType" varStatus="status">
