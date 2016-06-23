@@ -1,5 +1,8 @@
 package br.com.casadocodigo.loja.conf;
 
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,6 +19,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.google.common.annotations.Beta;
+
 import br.com.casadocodigo.loja.controller.HomeController;
 import br.com.casadocodigo.loja.daos.ProductDAO;
 import br.com.casadocodigo.loja.infra.FileSaver;
@@ -24,6 +29,7 @@ import br.com.casadocodigo.loja.validations.TitulosIguaisValidator;
 
 @EnableWebMvc
 @ComponentScan(basePackageClasses= { HomeController.class, ProductDAO.class, TitulosIguaisValidator.class, FileSaver.class, ShoppingCart.class })
+@EnableCaching
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
@@ -72,5 +78,10 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
+	}
+	
+	@Bean
+	public CacheManager cacheManager() {
+		return new ConcurrentMapCacheManager();
 	}
 }
