@@ -61,5 +61,4 @@ public class ShoppingItem implements Serializable {
 			return false;
 		return true;
 	}
-
 }
