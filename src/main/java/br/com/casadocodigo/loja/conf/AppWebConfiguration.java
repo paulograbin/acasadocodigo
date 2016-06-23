@@ -10,17 +10,20 @@ import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.casadocodigo.loja.controller.HomeController;
 import br.com.casadocodigo.loja.daos.ProductDAO;
 import br.com.casadocodigo.loja.infra.FileSaver;
+import br.com.casadocodigo.loja.models.ShoppingCart;
 import br.com.casadocodigo.loja.validations.TitulosIguaisValidator;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses= { HomeController.class, ProductDAO.class, TitulosIguaisValidator.class, FileSaver.class })
-public class AppWebConfiguration {
+@ComponentScan(basePackageClasses= { HomeController.class, ProductDAO.class, TitulosIguaisValidator.class, FileSaver.class, ShoppingCart.class })
+public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public InternalResourceViewResolver internalResourceViewResolver() {
@@ -28,6 +31,8 @@ public class AppWebConfiguration {
 		
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
+		
+		resolver.setExposedContextBeanNames("shoppingCart");
 		
 		return resolver;
 	}
