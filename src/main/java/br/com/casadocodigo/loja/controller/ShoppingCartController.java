@@ -1,6 +1,7 @@
 package br.com.casadocodigo.loja.controller;
 
 import java.math.BigDecimal;
+import java.util.concurrent.Callable;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -49,23 +50,25 @@ public class ShoppingCartController {
 	}
 	
 	@RequestMapping(value="/checkout", method=RequestMethod.POST)
-	public String checkout() {
-		BigDecimal total = shoppingCart.getTotal();
-		
-		String uriToPay = "http://book-payment.herokuapp.com/payment";
-		
-		HttpServletResponse res = null;
-		
-		try {
-			res = restTemplate.postForObject(uriToPay, new PaymentData(total), HttpServletResponse.class);
-			System.out.println(res);
+	public Callable<String> checkout() {
+		return () -> {
+			BigDecimal total = shoppingCart.getTotal();
 			
-			return "redirect:/products";
-		} catch(HttpClientErrorException e) {
-			System.out.println("Ocorreu um erro ao criar o pagamento: " + e.getMessage() + ", " + e.getResponseBodyAsString());
+			String uriToPay = "http://book-payment.herokuapp.com/payment";
 			
-			return "redirect:/shopping";
-		}
+			HttpServletResponse res = null;
+			
+			try {
+				res = restTemplate.postForObject(uriToPay, new PaymentData(total), HttpServletResponse.class);
+				System.out.println(res);
+				
+				return "redirect:/products";
+			} catch(HttpClientErrorException e) {
+				System.out.println("Ocorreu um erro ao criar o pagamento: " + e.getMessage() + ", " + e.getResponseBodyAsString());
+				
+				return "redirect:/shopping";
+			}
+		};
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
