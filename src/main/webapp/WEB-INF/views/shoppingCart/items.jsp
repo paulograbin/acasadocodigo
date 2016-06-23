@@ -6,6 +6,17 @@
 	<meta charset="UTF-8">
 	<title>Carrinho de Compras</title>
 	
+	<c:url value="/resources" var="dir"/>
+	<link href="${dir}/css/cssbase-min.css" 								rel="stylesheet" />
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700'  rel='stylesheet'>
+	<link href="${dir}/css/fonts.css" 										rel="stylesheet" />
+	<link href="${dir}/css/fontello-ie7.css" 								rel="stylesheet" />
+	<link href="${dir}/css/fontello-embedded.css" 							rel="stylesheet" />
+	<link href="${dir}/css/fontello.css" 									rel="stylesheet" />
+    <link href="${dir}/css/book-collection.css" 							rel="stylesheet" />
+    <link href="${dir}/css/style.css" 										rel="stylesheet" />
+  	<link href="${dir}/css/layout-colors.css" 								rel="stylesheet" />
+  	<link href="${dir}/css/responsivo-style.css" 							rel="stylesheet" />
 </head>
 
 <body class="cart">

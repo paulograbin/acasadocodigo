@@ -62,8 +62,7 @@ public class ShoppingCartController {
 			
 			return "redirect:/products";
 		} catch(HttpClientErrorException e) {
-			System.out.println("Ocorreu um erro ao criar o pagamento: " + e.getMessage());
-			System.out.println(e.getResponseBodyAsString());
+			System.out.println("Ocorreu um erro ao criar o pagamento: " + e.getMessage() + ", " + e.getResponseBodyAsString());
 			
 			return "redirect:/shopping";
 		}
