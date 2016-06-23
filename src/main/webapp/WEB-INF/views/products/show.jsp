@@ -12,6 +12,14 @@
 	
 	<title>${product.title}</title>
 	
+	<c:url value="/resources" var="dir"/>
+	<link href="${dir}/css/style.css" rel="stylesheet"/>
+	<link href="${dir}/css/guia-do-programador-style.css" rel="stylesheet"/>
+	<link href="${dir}/css/layout-colors.css" rel="stylesheet"/>
+	<link href="${dir}/css/responsivo-style.css" rel="stylesheet"/>
+	<link href="${dir}/css/products.css" rel="stylesheet"/>
+	
+	
 </head>
 
 <c:url value="/shopping" var="shoppingCartUrl" />
