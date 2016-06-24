@@ -8,17 +8,26 @@ import javax.transaction.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import br.com.casadocodigo.loja.builders.ProductBuilder;
+import br.com.casadocodigo.loja.conf.AppWebConfiguration;
+import br.com.casadocodigo.loja.conf.DataSourceConfigurationTest;
 import br.com.casadocodigo.loja.conf.JPAConfiguration;
+import br.com.casadocodigo.loja.conf.SecurityConfiguration;
 import br.com.casadocodigo.loja.models.BookType;
 import br.com.casadocodigo.loja.models.Product;
 import junit.framework.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ProductDAO.class, JPAConfiguration.class})
+@WebAppConfiguration
+@ContextConfiguration(classes = {AppWebConfiguration.class,
+		JPAConfiguration.class, SecurityConfiguration.class,
+		DataSourceConfigurationTest.class })
+@ActiveProfiles("test")
 public class ProductDAOTest {
 
 	@Autowired
