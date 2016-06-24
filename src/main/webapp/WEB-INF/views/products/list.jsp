@@ -1,12 +1,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Listagem de Produtos</title>
-	</head>
-	<body>
+<%@taglib tagdir="/WEB-INF/tags" prefix="cdc" %>
+
+	<cdc:page title="Listagem de Produtos">
 		<sec:authorize access="isAuthenticated()">
 			<sec:authentication property="principal" var="user"/>
 				<div>
@@ -46,5 +42,4 @@
 				</c:forEach>
 			</tr>
 		</table>
-	</body>
-</html>
+	</cdc:page>
