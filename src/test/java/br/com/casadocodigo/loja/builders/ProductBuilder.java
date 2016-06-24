@@ -18,7 +18,8 @@ public class ProductBuilder {
 	}
 	
 	public static ProductBuilder newProduct(BookType bookType, BigDecimal value) {
-		Product book = create("Book", BookType.COMBO, value);
+		Product book = create("Book 1", bookType, value);
+		
 		return new ProductBuilder(book);
 	}
 	
