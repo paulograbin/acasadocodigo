@@ -19,7 +19,6 @@
 	<link href="${dir}/css/responsivo-style.css" rel="stylesheet"/>
 	<link href="${dir}/css/products.css" rel="stylesheet"/>
 	
-	
 </head>
 
 <c:url value="/shopping" var="shoppingCartUrl" />
@@ -51,22 +50,34 @@
 				<a href="http://www.casadocodigo.com.br">Home</a>
 			</li>
 			<li class="category">
-				<a href="/collections/livros-de-agile">Agile</a>
+				<a href="/collections/livros-de-agile">
+					<fmt:message key="navigation.category.agile"/>
+				</a>
 			</li>
 			<li class="category">
-				<a href="/collections/livros-de-front-end">Front End</a>
+				<a href="/collections/livros-de-front-end">
+					<fmt:message key="navigation.category.front"/>
+				</a>
 			</li>
 			<li class="category">
-				<a href="/collections/livros-de-games">Games</a>
+				<a href="/collections/livros-de-games">
+					<fmt:message key="navigation.category.games"/>
+				</a>
 			</li>
 			<li class="category">
-				<a href="/collections/livros-de-java">Java</a>
+				<a href="/collections/livros-de-java">
+					<fmt:message key="navigation.category.java"/>
+				</a>
 			</li>
 			<li class="category">
-				<a href="/collections/livros-de-mobile">Mobile</a>
+				<a href="/collections/livros-de-mobile">
+					<fmt:message key="navigation.category.mobile"/>
+				</a>
 			</li>
 			<li class="category">
-				<a href="/collections/livros-desenvolvimento-web">Web</a>
+				<a href="/collections/livros-desenvolvimento-web">
+					<fmt:message key="navigation.category.web"/>
+				</a>
 			</li>
 			<li class="category">
 				<a href="/collections/outros">Outros</a>
