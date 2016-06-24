@@ -24,8 +24,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.POST, "/products").hasRole("ADMIN")
 			.antMatchers("/products/**").permitAll()
 			.antMatchers("/resources/**").permitAll()
-			.anyRequest().authenticated()
-			.and().formLogin();
+			.and().formLogin().loginPage("/login").permitAll()
+			.and().logout().logoutSuccessUrl("/products").permitAll()
+			.and().exceptionHandling().accessDeniedPage("/WEB-INF/views/403.jsp");
 	}
 
 	@Override
